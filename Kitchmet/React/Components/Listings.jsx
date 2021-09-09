@@ -6,9 +6,6 @@ import ListingCard from "../components/listings/ListingCard";
 import * as listingService from "../services/listingService";
 import LocationAutoComplete from "../components/forms/LocationAutoComplete";
 import Pagination from "@material-ui/lab/Pagination";
-import logger from "sabio-debug";
-
-const _logger = logger.extend("Listings");
 
 const Listings = (props) => {
   const [listing, setListing] = useState();
