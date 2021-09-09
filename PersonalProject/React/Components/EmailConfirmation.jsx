@@ -9,7 +9,6 @@ class EmailConfirmation extends React.Component {
 
   componentDidMount() {
     let token = this.props.match.params.token;
-    console.log(token);
     userService
       .emailConfirm(token)
       .then(this.onEmailVerifiedSuccess)
@@ -17,7 +16,6 @@ class EmailConfirmation extends React.Component {
   }
 
   onEmailVerifiedSuccess = (res) => {
-    console.log(res);
     this.setState(() => {
       return {
         verified: "Emailed Verified Successfully!",
@@ -26,7 +24,6 @@ class EmailConfirmation extends React.Component {
   };
 
   onEmailVerifiedError = (err) => {
-    console.error({ error: err });
     this.setState(() => {
       return {
         verified: "Failed, please try again...",
