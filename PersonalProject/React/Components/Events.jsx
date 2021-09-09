@@ -11,9 +11,6 @@ import SingleEvent from "./SingleEvent";
 import GoogleMapReact from "google-map-react";
 import "rc-pagination/assets/index.css";
 import Pagination from "rc-pagination";
-import debug from "sabio-debug";
-
-const _logger = debug.extend("Events");
 
 const Marker = () => {
   return <h1 style={{ color: "red" }}>*</h1>;
@@ -105,11 +102,7 @@ class Events extends Component {
     );
   };
 
-  //------------------------------------
-
   onSubmitBtn = (event) => {
-    _logger("EVENT:", event);
-
     event.location.lat = Number(event.location.lat);
     event.location.long = Number(event.location.long);
     event.location.zipCode = Number(event.location.zipCode);
@@ -141,14 +134,12 @@ class Events extends Component {
   onSearchDateChange = (e) => {
     let name = e.target.name;
     let newValue = e.target.value;
-    _logger(name, newValue);
 
     this.setState((prevState) => {
       let newState = { ...prevState };
       newState[name] = newValue;
       let start = newState.searchDateStart;
       let end = newState.searchDateEnd;
-      _logger(newState, start, end);
       return { newState, searchDateStart: start, searchDateEnd: end };
     });
   };
@@ -159,7 +150,6 @@ class Events extends Component {
 
     this.setState((prevState) => {
       let location = { ...prevState.eventInfo.location };
-      _logger(location);
 
       if (
         name === "zipCode" ||
@@ -208,8 +198,7 @@ class Events extends Component {
     this.setState(() => {
       let start = new Date(anEvent.dateStart).toISOString();
       anEvent.dateStart = start.split("T")[0];
-      _logger(anEvent.dateStart);
-
+      
       let end = new Date(anEvent.dateEnd).toISOString();
       anEvent.dateEnd = end.split("T")[0];
 
@@ -303,7 +292,7 @@ class Events extends Component {
     });
   };
 
-  //PAGINATION
+
   onPageChanged = (currentPage) => {
     this.setState((prevState) => {
       let index = currentPage - 1;
@@ -327,8 +316,6 @@ class Events extends Component {
     });
   };
 
-  //SEARCH
-
   onSearchBtn = () => {
     eventService
       .search(
@@ -341,7 +328,6 @@ class Events extends Component {
       .catch(this.onGetAllEventsError);
   };
 
-  //FILE UPLOAD
   fileSelectedHandler = (e) => {
     _logger(e.target.files, e.target.files[0]);
     let file = e.target.files[0];
@@ -366,7 +352,6 @@ class Events extends Component {
       .catch(this.onFileUploadError);
   };
 
-  //SHARE WITH EMAIL
   onHandleSendMsg = (e) => {
     _logger(e);
     let email = this.state.emailPayload;
@@ -397,7 +382,6 @@ class Events extends Component {
       return { emailPayload: newState };
     });
   };
-  //-----------------------------------------
 
   onSendEmailSuccess = (res) => {
     _logger(res);
@@ -437,7 +421,6 @@ class Events extends Component {
 
   onFileUploadSuccess = (res) => {
     let url = res.data.items[0];
-    console.log("URL", url);
 
     this.setState((prevState) => {
       return {
@@ -448,27 +431,23 @@ class Events extends Component {
   };
 
   onFileUploadError = (err) => {
-    console.error({ error: err });
     toast.error("Oh no! Something went wrong");
   };
 
   onAddEventSuccess = (res) => {
-    _logger(res);
     toast.success("Event was created :)");
   };
 
   onAddEventError = (err) => {
-    console.error({ error: err });
     toast.error("Oh no! Something went wrong");
   };
 
   onUpdateEventSuccess = (res) => {
-    _logger(res);
+
     toast.success("Event was updated successfully :)");
   };
 
   onUpdateEventError = (err) => {
-    console.error({ error: err });
     toast.error("Oh no! Something went wrong");
   };
 
@@ -513,7 +492,6 @@ class Events extends Component {
   };
 
   onGetAllEventsError = (err) => {
-    console.error({ error: err });
     toast.error("Oh no! Something went wrong");
   };
 
