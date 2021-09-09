@@ -1,8 +1,5 @@
 import axios from "axios";
-import debug from "sabio-debug";
 import * as helper from "./serviceHelpers";
-
-const _logger = debug.extend("File");
 
 const endpoint = `${helper.API_HOST_PREFIX}/api/files`;
 
