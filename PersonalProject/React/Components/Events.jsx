@@ -281,7 +281,7 @@ class Events extends Component {
     let lng;
     lat = position.coords.latitude;
     lng = position.coords.longitude;
-    _logger(lat, lng);
+
     this.setState((prevState) => {
       return {
         ...prevState,
@@ -329,7 +329,6 @@ class Events extends Component {
   };
 
   fileSelectedHandler = (e) => {
-    _logger(e.target.files, e.target.files[0]);
     let file = e.target.files[0];
 
     this.setState({
@@ -338,7 +337,6 @@ class Events extends Component {
   };
 
   fileUploadHandler = (e) => {
-    _logger(e);
     e.preventDefault();
     const formData = new FormData();
     formData.append(
@@ -353,7 +351,6 @@ class Events extends Component {
   };
 
   onHandleSendMsg = (e) => {
-    _logger(e);
     let email = this.state.emailPayload;
     let recipient = [];
     if (email.to.includes(",")) {
@@ -372,7 +369,6 @@ class Events extends Component {
   };
 
   onHandleShareChange = (e) => {
-    _logger(e, e.target.name, e.target.value);
     let name = e.target.name;
     let newValue = e.target.value;
 
@@ -384,16 +380,13 @@ class Events extends Component {
   };
 
   onSendEmailSuccess = (res) => {
-    _logger(res);
     toast.success("Email was sent successfully :)");
   };
   onSendEmailError = (err) => {
-    console.error({ error: err });
     toast.error("Oh no! Something went wrong");
   };
 
   onCurrentUserSuccess = (res) => {
-    _logger(res);
     let id = res.data.item.id;
 
     userService
@@ -403,7 +396,6 @@ class Events extends Component {
   };
 
   onGetUserByIdSuccess = (res) => {
-    _logger(res);
     let userEmail = res.data.item.email;
     this.setState((prevState) => {
       let emailPayload = { ...prevState.emailPayload };
@@ -452,7 +444,6 @@ class Events extends Component {
   };
 
   onGetAllEventsSuccess = (res) => {
-    _logger(res);
     let allEvents = res.data.item.pagedItems;
     let allMarkers = allEvents.map((event) => event.location);
 
