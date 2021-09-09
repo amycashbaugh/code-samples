@@ -4,10 +4,8 @@ import { Grid } from "@material-ui/core";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import Dropzone from "react-dropzone";
 import * as fileService from "../../services/fileService";
-import debug from "sabio-debug";
 import MuiAlert from "@material-ui/lab/Alert";
 
-const _logger = debug.extend("File");
 
 const FileUploadDropzone = (props) => {
   const [failed, setFailed] = useState(false);
