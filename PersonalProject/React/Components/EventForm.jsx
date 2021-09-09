@@ -7,7 +7,7 @@ const EventForm = (props) => {
   const event = props.event;
 
   const onSubmitBtnClick = (e) => {
-    props.onSubmitBtn(event);
+    props.onSubmitBtn(e);
   };
 
   const onMetaData = (e) => {
