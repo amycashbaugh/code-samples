@@ -4,9 +4,6 @@ import "./Wizard.css";
 import wizardSchema from "../../schemas/wizardSchema";
 import * as wizardProps from "./wizardPropTypes";
 import { Grid, Card, TextField, Divider, Button } from "@material-ui/core";
-import logger from "sabio-debug";
-
-const _logger = logger.extend("Wizard2");
 
 const WizardStep2 = (props) => {
   const {
