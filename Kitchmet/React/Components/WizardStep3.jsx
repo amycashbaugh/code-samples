@@ -5,9 +5,6 @@ import wizardSchema from "../../schemas/wizardSchema";
 import * as wizardProps from "./wizardPropTypes";
 import { Grid, Card, Divider, Button, TextField, Fab } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
-import logger from "sabio-debug";
-
-const _logger = logger.extend("Wizard3");
 
 const WizardStep3 = (props) => {
   const {
@@ -31,12 +28,10 @@ const WizardStep3 = (props) => {
 
   const onChange = () => {
     props.onChange(values);
-    _logger(values);
   };
 
   const onBackClicked = () => {
     onBack(values);
-    _logger(values);
   };
 
   return (
