@@ -4,9 +4,6 @@ import {
   onGlobalSuccess,
   API_HOST_PREFIX,
 } from "./serviceHelpers";
-import logger from "sabio-debug";
-
-const _logger = logger.extend("listingService");
 
 const endpoint = `${API_HOST_PREFIX}/api/listings`;
 
