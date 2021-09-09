@@ -1,7 +1,6 @@
 import "../forms/Wizard.css";
 import React, { useState } from "react";
 import Loki from "react-loki";
-import logger from "sabio-debug";
 import WizardStep1 from "./WizardStep1";
 import WizardStep2 from "./WizardStep2";
 import WizardStep3 from "./WizardStep3";
