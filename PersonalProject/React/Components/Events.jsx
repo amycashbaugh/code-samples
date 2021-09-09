@@ -546,7 +546,7 @@ class Events extends Component {
                   <div style={{ height: "100vh", width: "100%" }}>
                     <GoogleMapReact
                       bootstrapURLKeys={{
-                        key: "AIzaSyAHV8gt83uyTCJXs1uGdDuAC0yn8EMb-dg",
+                        key:****************
                       }}
                       center={this.state.center}
                       zoom={this.state.zoom}
