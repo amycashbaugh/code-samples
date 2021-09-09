@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import * as eventService from "./services/eventService";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import debug from "sabio-debug";
-
-const _logger = debug.extend("EventForm");
 
 const EventForm = (props) => {
   const event = props.event;
@@ -24,10 +21,6 @@ const EventForm = (props) => {
   const fileUploadHandler = (e) => {
     props.uploadFile(e);
   };
-
-  // const onChangePicture = (e) => {
-  //   props.imageUpload(e);
-  // };
 
   return (
     <React.Fragment>
@@ -69,7 +62,7 @@ const EventForm = (props) => {
               name="description"
               value={event.description}
               onChange={props.onHandleChange}
-              placeholder="Cause if you like the way you look so much, oh baby you should go and love yourself. And if you think that I'm still holding on to somethin, you should go and love yourself"
+              placeholder="Cause if you like the way you look so much, oh baby you should go and love yourself."
             />
             <label htmlFor="slug">Slug</label>
             <input
@@ -102,7 +95,6 @@ const EventForm = (props) => {
                   Upload
                 </button>
               </div>
-              {/* </div> */}
             </form>
           </div>
           <div className="pt-1 m-5 px-1" style={{ justifyContent: "center" }}>
