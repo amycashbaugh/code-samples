@@ -27,17 +27,14 @@ const WizardStep2 = (props) => {
 
   const onChange = () => {
     props.onChange(values);
-    _logger(values);
   };
 
   const onNextClicked = () => {
     onNext(values);
-    _logger(values);
   };
 
   const onBackClicked = () => {
     onBack(values);
-    _logger(values);
   };
 
   return (
