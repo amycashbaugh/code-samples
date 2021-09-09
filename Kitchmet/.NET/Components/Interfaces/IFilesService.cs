@@ -11,10 +11,8 @@ namespace Sabio.Services
     {
         public List<File> UploadMutliple(List<IFormFile> files, int userId);
         int Create(FileAddRequest model, int userId);
-        void Delete(int id);
         Paged<File> SelectAll(int pageIndex, int pageSize);
         File SelectById(int id);
         Paged<File> SelectByCreatedBy(int createdBy, int pageIndex, int pageSize);
-        void Update(FileUpdateRequest model);
     }
 }
