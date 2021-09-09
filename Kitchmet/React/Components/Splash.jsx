@@ -1,4 +1,3 @@
-//Work in progress
 import React, { Fragment, useState } from "react";
 import SplashNavBar from "../components/splash/SplashNavBar";
 import { Button, Grid } from "@material-ui/core";
@@ -7,10 +6,7 @@ import LocationAutoComplete from "../components/forms/LocationAutoComplete";
 import SplashReviews from "../components/splash/SplashReviews";
 import SplashBody from "../components/splash/SplashBody";
 import SplashFooter from "../components/splash/SplashFooter";
-import logger from "sabio-debug";
 import PropTypes from "prop-types";
-
-const _logger = logger.extend("SplashPage");
 
 const SplashPage = (props) => {
   const [coordinates, setCoordinates] = useState(null);
