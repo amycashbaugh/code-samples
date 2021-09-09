@@ -203,29 +203,6 @@ namespace Sabio.Services
             return pagedList;
         }
 
-        public void Update(FileUpdateRequest model)
-        {
-            string procName = "dbo.Files_Update";
-
-            _dataProvider.ExecuteNonQuery(procName, inputParamMapper: delegate (SqlParameterCollection collection)
-            {
-                AddCommonParams(model, collection);
-                collection.AddWithValue("@Id", model.Id);
-            },
-          returnParameters: null);
-        }
-
-        public void Delete(int id)
-        {
-            string procName = "[dbo].[Files_DeleteById]";
-            _dataProvider.ExecuteNonQuery(procName, inputParamMapper: delegate (SqlParameterCollection collection)
-            {
-                collection.AddWithValue("@Id", id);
-            },
-            returnParameters: null
-            );
-        }
-
         private static void AddCommonParams(FileAddRequest model, SqlParameterCollection collection)
         {
             collection.AddWithValue("@Url", model.Url);
