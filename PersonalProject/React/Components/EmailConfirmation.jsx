@@ -22,8 +22,6 @@ class EmailConfirmation extends React.Component {
       return {
         verified: "Emailed Verified Successfully!",
       };
-      //   },
-      //   () => this.props.history.push("/home")
     });
   };
 
