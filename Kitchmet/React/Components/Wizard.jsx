@@ -1,3 +1,5 @@
+//THIS IS A REUSABLE WIZARD STEP FORM
+
 import "../forms/Wizard.css";
 import React, { useState } from "react";
 import Loki from "react-loki";
@@ -6,8 +8,6 @@ import WizardStep2 from "./WizardStep2";
 import WizardStep3 from "./WizardStep3";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faUser, faEnvelope } from "@fortawesome/free-solid-svg-icons";
-
-const _logger = logger.extend("Wizard");
 
 const Wizard = () => {
   const [userData, setUserData] = useState({
@@ -24,7 +24,6 @@ const Wizard = () => {
 
   const onFinish = (values) => {
     setUserData(values);
-    _logger(values);
     //ajax call here
   };
 
