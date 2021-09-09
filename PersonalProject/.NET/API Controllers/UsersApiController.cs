@@ -44,7 +44,7 @@ namespace Sabio.Web.Api.Controllers
         public ActionResult<ItemsResponse<User>> GetAll()
         {
             int intCode = 200;
-            BaseResponse response = null; // do not declare an instance!
+            BaseResponse response = null; 
 
             try
             {
@@ -80,8 +80,6 @@ namespace Sabio.Web.Api.Controllers
             try
             {
                 User user = _service.GetById(id);
-                //ItemResponse<User> response = new ItemResponse<User>();
-                //response.Item = u;
 
                 if (user == null)
                 {
@@ -143,8 +141,7 @@ namespace Sabio.Web.Api.Controllers
 
             try
             {
-                int id = 24;
-                //int id = _service.Create(model);
+                int id = _service.Create(model);
                 string token = Guid.NewGuid().ToString();
 
                 _service.InsertToken(token, id);
@@ -184,72 +181,6 @@ namespace Sabio.Web.Api.Controllers
             return result;
         }
 
-        //[HttpPut("resetpassword")]
-        //[AllowAnonymous]
-        //public ActionResult<ItemResponse<int>> ResetPassword(int Id, UserUpdateRequest model)
-        //{
-        //    ObjectResult result = null;
-
-        //    try
-        //    {
-        //        int id = 24;
-        //        //int id = model.id
-        //        string token = Guid.NewGuid().ToString();
-
-        //        _service.InsertToken(token, id);
-
-        //        emailService.VerifyEmail(_appKeys.SendGridAppKey, model.Email, model.FirstName, token).Wait();
-
-        //        ItemResponse<int> response = new ItemResponse<int>() { Item = id };
-        //        result = Created201(response);
-        //    }
-        //    catch (Exception exp)
-        //    {
-        //        Logger.LogError(exp.ToString());
-        //        ErrorResponse response = new ErrorResponse(exp.Message);
-        //        result = StatusCode(500, response);
-        //    }
-
-        //    return result;
-        //}
-
-        [HttpGet("forgotpassword/{email}")]
-        [AllowAnonymous]
-        public ActionResult<SuccessResponse> GetUserByEmail(string email)
-        {
-
-            int code = 200;
-            BaseResponse response = null;
-            int userId = 0;
-
-            try
-            {
-                userId = _service.GetUserByEmail(email);
-
-
-                if (userId > 0)
-                {
-                    string token = Guid.NewGuid().ToString();
-                    _service.InsertToken(token, userId);
-                    _emailService.SendResetPassword(_appKeys.SendGridAppKey, email, token).Wait();
-                    response = new SuccessResponse();
-                }
-                else
-                {
-                    code = 400;
-                    response = new ErrorResponse("Email not found");
-                }
-
-            }
-            catch (Exception exp)
-            {
-                code = 500;
-                response = new ErrorResponse(exp.Message);
-            }
-
-            return StatusCode(code, response);
-        }
-
         [HttpPost("login")]
         [AllowAnonymous]
         public async Task<ActionResult<ItemResponse<int>>> LoginAsync(UserLoginRequest model)
@@ -261,8 +192,6 @@ namespace Sabio.Web.Api.Controllers
             {
                 try
                 {
-                    // to know whether or not this is the correct password/email combo
-                    // it will just default to SuccessResponse but now if it returns false we can send a 401
                     bool isSuccessful = await _service.LogInAsync(model.Email, model.Password);
                     if (isSuccessful == false)
                     {
@@ -296,7 +225,7 @@ namespace Sabio.Web.Api.Controllers
         public ActionResult<SuccessResponse> Update(UserUpdateRequest model)
         {
             int code = 200;
-            BaseResponse response = null;//
+            BaseResponse response = null;
 
             try
             {
