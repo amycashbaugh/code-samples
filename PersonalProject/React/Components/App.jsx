@@ -3,17 +3,8 @@ import { withRouter } from "react-router";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import SiteNav from "./SiteNav";
 import Unauthorized from "./Unauthorized";
-import ReactFormChallenge from "./codechallenge/ReactFormChallenge";
-// import Jumbo from "./Jumbo";
-// import Content from "./Content";
-// import Footer from "./Footer";
 import "./App.css";
 import { currentUser } from "./services/userService";
-//import { Button } from "bootstrap";
-import debug from "sabio-debug";
-
-const _logger = debug.extend("App"); //sabio:App
-const _loggerPage = _logger.extend("SPA"); //sabio:App:SPA
 
 class App extends Component {
   state = {
@@ -55,20 +46,6 @@ class App extends Component {
       isAnonymous: false,
       component: lazy(() => import("./Friends")),
     },
-    // {
-    //   path: "/friends/new",
-    //   exact: true,
-    //   roles: ["Admin"],
-    //   isAnonymous: false,
-    //   component: lazy(() => import("./FriendForm")),
-    // },
-    // {
-    //   path: "/friends/:id/edit",
-    //   exact: true,
-    //   roles: ["Admin"],
-    //   isAnonymous: false,
-    //   component: lazy(() => import("./FriendForm")),
-    // },
     {
       path: "/jobs",
       exact: true,
@@ -214,14 +191,12 @@ class App extends Component {
   filterRoutes(currentUserRoles, routeData) {
     let filteredRoutes = [];
 
-    //if anonymous user
     let anonymousRoutes = routeData.filter(
       (route) => route.isAnonymous === true
     );
     filteredRoutes.push(...anonymousRoutes);
     _logger("ANON:", filteredRoutes);
 
-    //if client is user
     if (currentUserRoles.some((role) => role === "User")) {
       let userRoutes = routeData.filter((route) =>
         route.roles.includes("User")
@@ -230,7 +205,6 @@ class App extends Component {
       _logger("USER:", filteredRoutes);
     }
 
-    //if client is admin
     if (currentUserRoles.some((role) => role === "Admin")) {
       let adminRoutes = routeData.filter((route) =>
         route.roles.includes("Admin")
