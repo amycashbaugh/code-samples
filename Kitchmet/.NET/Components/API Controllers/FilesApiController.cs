@@ -175,49 +175,5 @@ namespace Sabio.Web.Api.Controllers
 
             return StatusCode(intCode, response);
         }
-
-        [HttpPut("{id:int}")]
-        public ActionResult<SuccessResponse> Update(FileUpdateRequest model)
-        {
-            int intCode = 200;
-            BaseResponse response = null;
-
-            try
-            {
-                _service.Update(model);
-
-                response = new SuccessResponse();
-            }
-            catch (Exception exp)
-            {
-                intCode = 500;
-                base.Logger.LogError(exp.ToString());
-                response = new ErrorResponse(exp.Message);
-            }
-
-            return StatusCode(intCode, response);
-        }
-
-        [HttpDelete("{id:int}")]
-        public ActionResult<SuccessResponse> Delete(int id)
-        {
-            int intCode = 200;
-            BaseResponse response = null;
-
-            try
-            {
-                _service.Delete(id);
-
-                response = new SuccessResponse();
-            }
-            catch (Exception exp)
-            {
-                intCode = 500;
-                base.Logger.LogError(exp.ToString());
-                response = new ErrorResponse(exp.Message);
-            }
-
-            return StatusCode(intCode, response);
-        }
     }
 }
