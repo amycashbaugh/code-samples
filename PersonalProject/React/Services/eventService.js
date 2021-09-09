@@ -2,10 +2,7 @@ import axios from "axios";
 
 const eventEndpoint = "https://localhost:50001/api/events";
 
-
 let add = (payload) => {
-  console.log("Adding An Event.....", payload);
-
   const config = {
     method: "POST",
     url: eventEndpoint,
@@ -13,13 +10,10 @@ let add = (payload) => {
     crossdomain: true,
     headers: { "Content-Type": "application/json" },
   };
-
   return axios(config);
 };
 
 let getPage = (pageIndex, pageSize) => {
-  console.log("Getting Recent Event....." );
-
   const config = {
     method: "GET",
     url: eventEndpoint + "/paginate?pageIndex=" + pageIndex + "&pageSize=" + pageSize,
@@ -30,9 +24,7 @@ let getPage = (pageIndex, pageSize) => {
   return axios(config);
 };
 
-
 let update = (id, payload) => {
-    console.log("Updating Events.......", id, payload);
     const config = {
       method: "PUT",
       url: eventEndpoint + "/" + id,
@@ -45,9 +37,7 @@ let update = (id, payload) => {
   
 };
 
-
 let search = (pageIndex, pageSize,dateStart, dateEnd) => {
-    console.log("Searching Events..........");
     const config = {
       method: "GET",
       url: eventEndpoint + "/search?pageIndex=" + pageIndex + "&pageSize=" + pageSize + "&dateStart=" + dateStart + "&dateEnd=" + dateEnd,
